@@ -1,7 +1,5 @@
 package com.challenge.games.dto;
 
-import com.challenge.games.entity.Location;
-
 import java.io.Serializable;
 
 public class PlayerDTO implements Serializable {
