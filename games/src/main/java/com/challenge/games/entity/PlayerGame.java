@@ -1,10 +1,13 @@
 package com.challenge.games.entity;
 
+import com.challenge.games.dto.DTO;
+import com.challenge.games.dto.PlayerGameDTO;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "player_game")
-public class PlayerGame {
+@Table(name = "player_game", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"player_id", "game_id", "level_id"})
+})public class PlayerGame implements DTO<PlayerGameDTO> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,5 +59,16 @@ public class PlayerGame {
 
     public void setLevel(Level level) {
         this.level = level;
+    }
+    public PlayerGameDTO toDTO() {
+        return new PlayerGameDTO(
+                this.id,
+                this.player.getId(),
+                this.player.getNickName(),
+                this.player.getLocation() != null ? this.player.getLocation().getName() : null,
+                this.game.getId(),
+                this.game.getName(),
+                this.level != null ? this.level.getName().name() : null
+        );
     }
 }

@@ -1,10 +1,12 @@
 package com.challenge.games.entity;
 
+import com.challenge.games.dto.DTO;
+import com.challenge.games.dto.LevelDTO;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "levels")
-public class Level {
+public class Level implements DTO<LevelDTO> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,5 +36,8 @@ public class Level {
 
     public void setName(LevelType name) {
         this.name = name;
+    }
+    public LevelDTO toDTO() {
+        return new LevelDTO(this.id, this.name.name());
     }
 }

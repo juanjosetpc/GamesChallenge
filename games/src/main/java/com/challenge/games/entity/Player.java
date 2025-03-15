@@ -1,10 +1,12 @@
 package com.challenge.games.entity;
 
+import com.challenge.games.dto.DTO;
+import com.challenge.games.dto.PlayerDTO;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "players")
-public class Player {
+public class Player implements DTO<PlayerDTO> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +44,16 @@ public class Player {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void setId(Integer id) {
+    }
+
+    public PlayerDTO toDTO() {
+        return new PlayerDTO(
+                this.id,
+                this.nickName,
+                this.location != null ? this.location.getName() : null
+        );
     }
 }
