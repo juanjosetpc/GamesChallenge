@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "a4455fb0-0c7a-43b5-a5f3-0b206b7f5d8a",
+		"name": "Game API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27030576"
+	},
+	"item": [
+		{
+			"name": "/api/player-game/search?gameId=<id>&levelType=<levelName>&location=<location name>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/player-game/search?gameId=1&levelType=PRO&location=Spain",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"player-game",
+						"search"
+					],
+					"query": [
+						{
+							"key": "gameId",
+							"value": "1"
+						},
+						{
+							"key": "levelType",
+							"value": "PRO"
+						},
+						{
+							"key": "location",
+							"value": "Spain"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/player-game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"playerId\": 1, \"gameId\": 2, \"levelType\": \"INVENCIBLE\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/player-game",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"player-game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/player-game/{playerId}/{gameId}/level/{levelName}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/player-game/:playerId/:gameId/level/:levelName",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"player-game",
+						":playerId",
+						":gameId",
+						"level",
+						":levelName"
+					],
+					"variable": [
+						{
+							"key": "playerId",
+							"value": "1"
+						},
+						{
+							"key": "gameId",
+							"value": "1"
+						},
+						{
+							"key": "levelName",
+							"value": "INVENCIBLE"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

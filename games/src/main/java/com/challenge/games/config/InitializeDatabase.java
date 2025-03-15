@@ -47,11 +47,14 @@ public class InitializeDatabase implements CommandLineRunner {
         Player player3 = playerRepo.save(new Player("ProPlayer", france));
         Player player4 = playerRepo.save(new Player("NoobPlayer", germany));
         Player player5 = playerRepo.save(new Player("BrazilianGamer", brazil));
+        Player player6 = playerRepo.save(new Player("GamerSpain2", spain));
+
 
         playerGameRepo.save(new PlayerGame(player1, blackJack, pro));
         playerGameRepo.save(new PlayerGame(player2, poker, noob));
         playerGameRepo.save(new PlayerGame(player3, poker, invincible));
         playerGameRepo.save(new PlayerGame(player4, blackJack, noob));
         playerGameRepo.save(new PlayerGame(player5, blackJack, pro));
+        playerGameRepo.save(new PlayerGame(player6, blackJack, pro));
     }
 }
